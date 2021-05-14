@@ -415,9 +415,8 @@ def main():
 						        		# Transform Bitmap Back Into Video
 						        		with st.spinner("STEP 3: Forming back your cartoon gif....please wait this might take long"):
 								        	if not os.system("ffmpeg -r 5 -i cartoonized_videos/"+video_file.name+"/bitmap/img%03d.bmp -c:v libx264 -pix_fmt yuv420p cartoonized_videos/"+video_file.name+"/output.mp4"):
+								        		os.rename("cartoonized_videos/"+video_file.name+"/output.mp4","cartoonized_videos/"+video_file.name+"/output.gif")
 								        		st.success("STEP 3: Conversion Successfull")
-								        		clip = VideoFileClip("cartoonized_videos/"+video_file.name+"/output.mp4")
-								        		clip.write_gif("cartoonized_videos/"+video_file.name+"/output.gif",fps=10)
 								        		flag=1
 								        	else:
 								        		st.error("Error Creating Video")
